@@ -1,0 +1,105 @@
+<h3>Create Book</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="personnesaveform" #savepersonne (ngSubmit)="savePersonne(savePersonne)">
+        <div class="form-group">
+          <label for="name">Personne id</label>
+          <input type="text" class="form-control"  formControlName="id" data-toggle="tooltip"
+                 data-placement="right" title="Enter Personne id" >
+          <div class="alert alert-danger" *ngIf = "(id.touched) && (id.invalid)"
+               style="margin-top: 5px;">
+            <span *ngIf="id.errors.required">Book ID is Required</span>
+            <span *ngIf = "id.errors.minlength">
+                        MinLength Error
+                    </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">nom</label>
+          <input type="text" class="form-control"  formControlName="nom" data-toggle="tooltip"
+                 data-placement="right" title="Enter Book Name" >
+          <div class="alert alert-danger" *ngIf = "(nom.touched) && (nom.invalid)"
+               style="margin-top: 5px;">
+            <span *ngIf="nom.errors.required">Personne Name is Required</span>
+            <span *ngIf = "nom.errors.minlength">
+                        MinLength Error
+                    </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">prenom</label>
+          <input type="text" class="form-control"  formControlName="prenom" data-toggle="tooltip"
+                 data-placement="right" title="Enter prenom" >
+          <div class="alert alert-danger" *ngIf = "(prenom.touched) && (prenom.invalid)"
+               style="margin-top: 5px;">
+            <span *ngIf="prenom.errors.required">Personne prenom is Required</span>
+            <span *ngIf = "prenom.errors.minlength">
+                        MinLength Error
+                    </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">mail</label>
+          <input type="text" class="form-control"  formControlName="mail" data-toggle="tooltip"
+                 data-placement="right" title="Enter mail" >
+          <div class="alert alert-danger" *ngIf = "(mail.touched) && (mail.invalid)"
+               style="margin-top: 5px;">
+            <span *ngIf="mail.errors.required">Personne mail is Required</span>
+            <span *ngIf = "mail.errors.minlength">
+                        mail Error
+                    </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">cin</label>
+          <input type="text" class="form-control"  formControlName="cin" data-toggle="tooltip"
+                 data-placement="right" title="Enter cin" >
+          <div class="alert alert-danger" *ngIf = "(cin.touched) && (cin.invalid)"
+               style="margin-top: 5px;">
+            <span *ngIf="cin.errors.required">cin</span>
+            <span *ngIf = "cin.errors">
+                        MinLength Error
+                    </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">num_tel</label>
+          <input type="text" class="form-control"  formControlName="num_tel" data-toggle="tooltip"
+                 data-placement="right" title="Enter num_tel" >
+          <div class="alert alert-danger" *ngIf = "(num_tel.touched) && (num_tel.invalid)"
+               style="margin-top: 5px;">
+            <span *ngIf="num_tel.errors.required">Book language is Required</span>
+            <span *ngIf = "num_tel.errors.minlength">
+                        MinLength Error
+                    </span>
+          </div>
+        </div>
+    <div>
+        <input type="date" id="start" name="trip-start"
+               value="2018-07-22"
+               min="2018-01-01" max="2038-12-31">
+    </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div [hidden]="!submitted">
+      <h4>Book Added SuccessFully!</h4>
+      <button (click)="addPersonneForm()" class='btn btn-primary'>Add More books</button>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+

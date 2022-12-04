@@ -1,0 +1,86 @@
+
+
+
+<!-- Portfolio Section -->
+<div class="container-about-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="title-un">OUR COLLECTION OF BOOKS</h3>
+        <div class="title-un-icon"><i class="fa ion-ios-heart-outline"></i></div>
+        <p class="title-un-des">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+          nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
+          molestie consequat, </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="gallery-portfolio-container"        >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="port-filter m-port-filter">
+          <ul>
+            <li class="active"><a href="#" data-filter="*">All</a></li>
+            <li><a href="#" data-filter=".FICTION">FICTION</a></li>
+            <li><a href="#" data-filter=".FANTASY">FANTASY</a></li>
+            <li class=""><a href="#" data-filter=".MISTERY ">MISTERY </a></li>
+            <li><a href="#" data-filter=".ROMANCE ">ROMANCE </a></li>
+            <li><a href="#" data-filter=".BIOGRAPHY">BIOGRAPHY </a></li>
+          </ul>
+        </nav>
+
+      </div>
+        <div class="classic-portfolio col-3-portfolio portfolio gallery-portfolio shortc-mp" >
+          <div class="container">
+
+
+
+              <div class="row">
+
+
+
+                    <div class="modal-body" *ngFor="let book of books"   >
+
+                    <div class="card">
+                      <div class="image">
+                        <img
+                          src="{{book.imageurl}}" width="200"
+                          height="300" />
+
+                      </div>
+                      <div class="details">
+                        <div class="center">
+                          <h1>{{book.title}}<br><span>{{book.auther}}</span></h1>
+                          <h6>{{book.language}}</h6>
+
+                          <ul>
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                          </ul>
+                        </div>
+                      </div>
+
+
+
+
+
+                </div>
+              </div>
+              <!-- /row -->
+            </div>
+
+          </div>
+
+
+      </div>
+    </div>
+
+</div>
+
+
+</div>
+

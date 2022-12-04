@@ -1,0 +1,136 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h1 style="text-align: center">books</h1><br>
+      <div class="row" [hidden]="!deleteMessage">
+
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                        <div class="alert alert-info alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Book Data Deleted</strong>
+                        </div>
+                </div>
+                <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+
+  <div class="panel-body">
+      <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger"  >
+          <thead class="thead-light">
+              <tr>
+                  <th>title</th>
+                  <th>auther</th>
+                  <th>language</th>
+                  <th>type</th>
+                   <th>number of copies </th>
+                <th>image</th>
+                <th>Action</th>
+
+              </tr>
+          </thead>
+          <tbody>
+               <tr *ngFor="let book of books ">
+                  <td>{{book.title}}</td>
+                  <td>{{book.auther}}</td>
+                  <td>{{book.language}}</td>
+                 <td>{{book.type}}</td>
+                 <td>{{book.numofcopies}}</td>
+                 <td><img src="{{book.imageurl}}" alt=""  width="100"
+                          height="200"  /> </td>
+                  <td><button (click)="deleteBook(book.id)" class='btn btn-primary'><i class="fa fa-futboll-0">Delete</i></button>&nbsp;
+                    <button (click)="updateBook(book.id)" class='btn btn-info'
+                    data-toggle="modal" data-target="#myModal">Update</button>
+                  </td>
+                </tr>
+          </tbody><br>
+      </table>
+  </div>
+</div>
+
+<div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+                <form [formGroup]="bookupdateform" #updstu (ngSubmit)="updateBook(updstu)">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" style="text-align: center">Update Book</h4>
+
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" *ngFor="let book of books" >
+                <div [hidden]="isupdated">
+
+                    <input type="hidden" class="form-control"  formControlName="idl" [(ngModel)]="book.id">
+                            <div class="form-group">
+                                <label for="name">Book title</label>
+                                <input type="text" class="form-control"  formControlName="titlel" [(ngModel)]="book.title"  >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">language</label>
+                                <input type="text" class="form-control" formControlName="languagel" [(ngModel)]="book.language">
+                            </div>
+
+                  <div class="form-group">
+                    <label for="name">Book auther</label>
+                    <input type="text" class="form-control"  formControlName="autherl" [(ngModel)]="book.auther"  >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="name">nombre copie</label>
+                    <input type="text" class="form-control" formControlName="numofcopiesl" [(ngModel)]="book.numofcopies">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Book image</label>
+                    <input type="file" class="form-control"  formControlName="imageurl" [(ngModel)]="book.imageurl"  >
+                    <img [src]="imageurl"  *ngIf="imageurl" class="selected-image"/>
+                  </div>
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="name">Book type</label>
+                                  <select class="form-control" formControlName="typel" required>
+                                    <option value="Fantasy" [selected]="'Fantasy' == book.type">Fantasy</option>
+                                    <option value="Young Adult (YA)" [selected]="'Young Adult (YA)' == book.type" >Young Adult (YA)</option>
+                                    <option value="Children's Fiction" [selected]="'Children\'s Fiction' == book.type" >Children's Fiction</option>
+                                    <option value="philosophy" [selected]="'philosophy' == book.type">philosophy</option>
+                                    <option value="Horror" [selected]="'Horror' == book.type">Horror</option>
+                                    <option value="Science" [selected]="'Science' == book.type" >Science</option>
+                                    <option value="Science Fiction" [selected]="'Science Fiction' == book.type">Science Fiction</option>
+                                    <option value="Dystopian" [selected]="'Dystopian' == book.type">Dystopian</option>
+                                    <option value="Detective & Mystery" [selected]="'Detective & Mystery' == book.type">Detective & Mystery</option>
+                                    <option value="Romance" [selected]="'Romance' == book.type" >Romance</option>
+                                    <option value="Historical " [selected]="'Historical ' == book.type">Historical </option>
+                                    <option value="Magical Realism" [selected]="'Magical Realism' == book.type">Magical Realism</option>
+                                    <option value="Fiction" [selected]="'Fiction' == book.type">Fiction</option>
+                                    <option value="Historical Fiction" [selected]="'Historical Fiction' == book.type" >Historical Fiction</option>
+                                    <option value="Graphic novel" [selected]="'Graphic novel' == book.type">Graphic novel</option>
+                                    <option value="Thriller" [selected]="'Thriller' == book.type">Thriller</option>
+                                   <option value="Comic book" [selected]="'Comic book' == book.type">Comic book</option>
+                                    <option value="Manga" [selected]="'Manga' == book.type">Manga</option>
+
+                                  </select>
+                            </div>
+                  </div>
+                  <div [hidden]="!isupdated">
+                      <h4>Book Detail Updated!</h4>
+                  </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer" >
+              <button type="submit" class="btn btn-success" [hidden]="isupdated">Update</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeisUpdate()">Close</button>
+            </div>
+
+        </form>
+          </div>
+        </div>
+      </div>

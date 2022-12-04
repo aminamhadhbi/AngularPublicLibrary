@@ -1,0 +1,110 @@
+<h3>Create Book</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="BookForm"  (ngSubmit)="onSubmit()"  class="example-form" >
+        <div class="form-group">
+          <label for="name">Book Name</label>
+          <input type="text"  id="title" required [(ngModel)]="book.title" class="input form-control" formControlName="title">
+        </div>
+
+
+        <div class="form-group">
+          <label for="name">Book id</label>
+          <input type="text"  class="input form-control"  id="id" required [(ngModel)]="book.id" formControlName="id">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Book numofcopies</label>
+          <input type="text"  class="input form-control"  id="numofcopies" required [(ngModel)]="book.numofcopies"
+                 formControlName="numofcopies">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Book language</label>
+          <input type="text"   class="input form-control" id="language" required [(ngModel)]="book.language" formControlName="language">
+
+        </div>
+
+        <div class="form-group">
+          <label for="name">Book auther</label>
+          <input type="text"  class="input form-control"  id="auther" required [(ngModel)]="book.auther" formControlName="auther">
+
+
+        </div>
+
+        <div class="form-group">
+          <label for="name">Genres</label>
+          <select  class="input form-control"  formControlName="type" data-toggle="tooltip"
+                  data-placement="right" title="Select Book type"  >
+            <option value="null">--Select type--</option>
+            <option value=" philosophy"> philosophy</option>
+            <option value="Science">Science</option>
+            <option value="Historical ">Historical</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Romance">Romance</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Detective & Mystery">Detective & Mystery</option>
+            <option value="Horror">Horror</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Historical Fiction">Historical Fiction</option>
+            <option value="Young Adult (YA)">Young Adult (YA)</option>
+            <option value="Children's Fiction">Children's Fiction</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Dystopian">Dystopian</option>
+            <option value="Magical Realism">Magical Realism</option>
+            <option value="Graphic novel">Graphic novel</option>
+            <option value="Comic book">Comic book</option>
+            <option value="Manga">Manga</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+
+          <div id="direct_upload" ng2FileDrop [uploader]="cloudinaryService.uploader"
+               (fileOver)="cloudinaryService.fileOverBase($event)"
+               [ngClass]="{'nv-file-over': cloudinaryService.hasBaseDropZoneOver}">
+
+
+
+
+              <div class="form_line">
+                <label>Drag your Image here</label>
+
+                <div class="upload_button_holder">
+
+                  <input type="file"   class="input form-control"    required [(ngModel)]="book.imageurl"   formControlName="imageurl" #fileInput ng2FileSelect [uploader]="cloudinaryService.uploader" (change)="onImageUpload($event)"
+                  />
+                  <img [src]="imgurl" *ngIf="imgurl"  class="selected-image"/>
+
+                  <button type="button" class="btn btn-success btn-s upload"
+                          (click)="cloudinaryService.uploader.uploadAll()"
+                          [disabled]="!cloudinaryService.uploader.getNotUploadedItems().length" >
+                    <span>Upload Image!</span>
+                  </button>
+                </div>
+              </div>
+
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-success" >Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div [hidden]="!submitted">
+      <h4>Book Added SuccessFully!</h4>
+
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+
